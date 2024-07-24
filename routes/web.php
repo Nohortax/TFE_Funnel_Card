@@ -14,6 +14,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/decks', function() {
+    return Inertia::render('Decks/Index');
+});
+
+Route::get('/cards', function() {
+    return Inertia::render('Decks/Show');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
