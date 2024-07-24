@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "tillana";
+        src: url(../assets/fonts/Tillana/Tillana-Regular.ttf) format('truetype');
+    }
+
+    @font-face {
+        font-family: "raleway";
+        src: url(../assets/fonts/raleway/static/Raleway-Regular.ttf) format('truetype');
+    }
+}
+
+/* TITLES */
+h1, h2, h3, a, p {
+    color: 000A0C;
+}
+
+h1, h2, h3 {
+    font-family: 'tillana';
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.1rem;
+}
+
+* {
+    font-family: 'raleway';
+}
+
+/* NAV */
+nav ul li a {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+input {
+    background-color: rgb(251, 253, 255);
+}
