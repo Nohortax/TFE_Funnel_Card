@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +17,7 @@ Route::get('/', function () {
 });
 
 // INDEX
-Route::get('/decks', function() {
-    return Inertia::render('Decks/Index');
-})->middleware(['auth', 'verified'])->name('index');
+Route::get('/decks', [FrontController::class, 'index'])->middleware(['auth', 'verified'])->name('index');
 
 // SHOW
 Route::get('/cards', function() {
