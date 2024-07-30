@@ -25,9 +25,9 @@ Route::get('/cards', function() {
 })->name('show');
 
 // DASHBOARD
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->name('dashboard');
 
 // PROFILE/ACCOUNT EDITING
 Route::middleware('auth')->group(function () {
