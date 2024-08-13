@@ -1,9 +1,11 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
+import { Link } from '@inertiajs/vue3';
 import TextInput from '@/Components/TextInput.vue';
 
 components: {
-    Layout
+    Layout,
+    Link
 }
 
 defineProps({
@@ -16,14 +18,14 @@ defineProps({
         <div class="flex justify-between mb-4 sm:mb-10">       
             <div class="flex items-center justify-start">
                 <h2 class="mr-4 sm:mr-8
-                        text-xs sm:text-sm md:text-lg">
+                           text-sm sm:text-lg">
                         Your decks {{ filterDeck }}
                 </h2>
 
-                <router-link :to="{ name: 'createDeck' }">
+                <Link href="/create-deck">
                     <img src="../../../assets/img/deck/new-deck.png" alt="add a new deck"
                         class="size-3 sm:size-4 lg:size-5">
-                </router-link>
+                </Link>
             </div>
 
             <form class="flex items-center justify-end relative">
@@ -63,15 +65,15 @@ defineProps({
                 <hr class="absolute border-1 border-stroke mb-4 w-0 md:w-28 bottom-32">
                         
                 <div class="absolute bottom-4">
-                    <router-link :to="{ name: 'cards', params: { id: deck.id } }">
+                    <Link href="">
                         <img src="../../../assets/img/deck/edit.png" alt="edit deck's name and display cards"
                             class="size-4 sm:size-6 mb-4">
-                    </router-link>
+                    </Link>
 
-                    <router-link :to="{ name: 'playCards', params: { id: deck.id } }">
+                    <Link href="">
                         <img src="../../../assets/img/deck/play.png" alt="play cards"
                             class="size-4 sm:size-6 mb-4">
-                    </router-link>
+                    </Link>
 
                     <button @click="deleteDeck(deck.id, index)">
                         <img src="../../../assets/img/deck/delete.png" alt="delete deck"

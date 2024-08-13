@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Deck;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,6 +14,13 @@ class FrontController extends Controller
     {
         return Inertia::render('Decks/Index', [
             'decks' => Deck::all()
+        ]);
+    }
+
+    public function createDeck()
+    {
+        return Inertia::render('Decks/CreateDeck', [
+            'categories' => Category::all()
         ]);
     }
 }

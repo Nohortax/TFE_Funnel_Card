@@ -17,12 +17,24 @@ Route::get('/', function () {
 });
 
 // INDEX
-Route::get('/decks', [FrontController::class, 'index'])->middleware(['auth', 'verified'])->name('index');
+Route::get('/decks', [FrontController::class, 'index'])
+        ->middleware(['auth', 'verified'])
+        ->name('index');
 
 // SHOW
 Route::get('/cards', function() {
     return Inertia::render('Decks/Show');
 })->name('show');
+
+// ACCOUNT/PROFILE
+Route::get('/account', function() {
+    return Inertia::render('Profile/Edit');
+})->name('profile');
+
+// CREATE
+    // DECK
+    Route::get('/create-deck', [FrontController::class, 'createDeck']) 
+            ->name('createDeck');
 
 // DASHBOARD
 // Route::get('/dashboard', function () {
