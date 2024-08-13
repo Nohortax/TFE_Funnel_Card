@@ -14,6 +14,11 @@ class Category extends Model
         'name'
     ];
 
+    /**
+     * Has Decks
+     *
+     * @return void
+     */
     public function deck() {
         return $this->hasMany(Deck::class);
     }
