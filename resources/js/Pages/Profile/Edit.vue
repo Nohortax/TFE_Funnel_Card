@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Layout from '@/Layouts/Layout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
@@ -16,31 +16,21 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Profile" />
+
+    <Head title="Account" />
 
     <Layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Your account</h2>
-        </template>
+        <h2 class="text-sm sm:text-lg">Your account</h2>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
-                </div>
+        <div class="grid gap-8 sm:gap-12 md:gap-16 mt-4 sm:mt-8 md:mt-10">
+            <UpdateProfileInformationForm 
+                :must-verify-email="mustVerifyEmail" 
+                :status="status" 
+                class="max-w-xl" />
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdatePasswordForm class="max-w-xl" />
-                </div>
+            <UpdatePasswordForm class="max-w-xl" />
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <DeleteUserForm class="max-w-xl" />
-                </div>
-            </div>
+            <DeleteUserForm class="max-w-xl" />
         </div>
     </Layout>
 </template>
