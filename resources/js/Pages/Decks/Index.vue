@@ -1,16 +1,11 @@
 <script setup>
-import Layout from '@/Layouts/Layout.vue';
-import { Link } from '@inertiajs/vue3';
 import TextInput from '@/Components/TextInput.vue';
-
-components: {
-    Layout,
-    Link
-}
 
 defineProps({
     decks: Array
 })
+
+
 </script>
 
 <template>

@@ -1,9 +1,5 @@
 <script setup>
 import Nav from '@/Shared/Nav.vue';
-
-components: {
-    Nav
-}
 </script>
 
 <template>
@@ -20,6 +16,4 @@ components: {
             <slot />
         </main>
     </div>
-    
-    
 </template>
