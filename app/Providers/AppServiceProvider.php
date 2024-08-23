@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
+use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,4 +26,5 @@ class AppServiceProvider extends ServiceProvider
             return route('index');
         });
     }
+
 }
