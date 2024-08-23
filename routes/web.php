@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\FrontController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\DeckController;
+use App\Http\Controllers\ProfileController;
 
 // FIRST PAGE
 Route::get('/', function () {
@@ -17,7 +18,7 @@ Route::get('/', function () {
 });
 
 // INDEX
-Route::get('/decks', [FrontController::class, 'index'])
+Route::get('/decks', [DeckController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('index');
 
@@ -33,8 +34,11 @@ Route::get('/account', function() {
 
 // CREATE
     // DECK
-    Route::get('/create-deck', [FrontController::class, 'createDeck']) 
+    Route::get('/create-deck', [DeckController::class, 'createDeck']) 
             ->name('createDeck');
+
+    Route::post('create-deck', [DeckController::class, 'storeDeck'])
+            ->name('create.deck');
 
 // DASHBOARD
 // Route::get('/dashboard', function () {

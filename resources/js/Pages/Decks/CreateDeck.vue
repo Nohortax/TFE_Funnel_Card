@@ -1,14 +1,17 @@
 <script setup>
-import Layout from '@/Layouts/Layout.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
+
+const userId = usePage().props.auth.user.id;
 
 const form = useForm({
     name: '',
-    category: '',
+    category_id: '',
+    user_id: userId,
 })
 
 defineProps({
@@ -16,6 +19,12 @@ defineProps({
 })
 
 const selected = "Language";
+
+const submit = () => {
+    form.post(route("create.deck"), {
+        onFinish: () => form.reset(),
+    });
+};
 </script>
 
 <template>
@@ -31,6 +40,7 @@ const selected = "Language";
         <form @submit.prevent="submit"
               class="flex flex-col items-center mb-4">
             <TextInput id="name"
+                       name="name"
                        type="text"
                        class="mb-4 sm:mb-8 pl-2"
                        v-model="form.name"
@@ -41,8 +51,8 @@ const selected = "Language";
 
             <InputLabel for="category"> Choose a category</InputLabel>
             <select id="category"
-                    name="categories" 
-                    v-model="form.category"
+                    name="category_id" 
+                    v-model="form.category_id"
                     class="border-2 border-stroke rounded-sm mb-8 sm:mb-12 mt-2 pl-2
                            text-xs sm:text-sm md:text-lg"
                     required>
