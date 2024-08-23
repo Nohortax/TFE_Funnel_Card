@@ -1,13 +1,16 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
-components: {
-    Link
-}
+defineProps({
+    active: {
+        type: Boolean
+    }
+})
+
 </script>
 
 <template>
-    <Link>
+    <Link :class="{'font-bold': active}">
         <slot />
     </Link>
 </template>

@@ -1,9 +1,5 @@
 <script setup>
 import NavLink from './NavLink.vue';
-
-components: {
-    NavLink
-}
 </script>
 
 <template>
@@ -14,12 +10,12 @@ components: {
         </h1>
         <ul class="flex divide-x divide-stroke text-xs sm:text-base">
             <li class="sp:p-2 sm:p-4">
-                <NavLink href="/decks">
+                <NavLink href="/decks" :active="$page.component === 'Decks/Index'">
                     Decks
                 </NavLink>
             </li>
             <li class="sp:p-2 sm:p-4">
-                <NavLink href="/account">
+                <NavLink href="/account" :active="$page.component === 'Profile/Edit'">
                     Account
                 </NavLink>
             </li>
