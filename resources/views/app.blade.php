@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        <title inertia>{{ config('app.name', 'FC') }}</title>
+        <meta name="description" content="Create your own flashcards, and learn everything you want and need efficiently">
 
         <!-- Scripts -->
         @routes

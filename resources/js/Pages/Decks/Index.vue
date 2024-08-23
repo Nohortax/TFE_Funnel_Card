@@ -5,16 +5,16 @@ defineProps({
     decks: Array
 })
 
-
 </script>
 
 <template>
+    <Head title="Your decks" />
 
     <div class="flex justify-between mb-4 sm:mb-10">       
         <div class="flex items-center justify-start">
             <h2 class="mr-4 sm:mr-8
                        text-sm sm:text-lg">
-                    Your decks {{ filterDeck }}
+                    Your decks
             </h2>
 
             <Link href="/create-deck">
@@ -48,7 +48,7 @@ defineProps({
                     min-h-40 sm:min-h-48 md:min-h-56
                     mb-4 sm:mb-8 
                     border-2 border-stroke rounded-sm"
-            v-for="(deck, index) in filteredDeck" :key="deck.id">
+            v-for="(deck, index) in decks" :key="deck.id">
 <!-- Boucle sur la fonction qui permet de filtrer les noms de deck avec la valeur de l'input -->
 
             <h3 class="mt-2 sm:mt-4 mx-4 max-h-10 md:max-h-36
