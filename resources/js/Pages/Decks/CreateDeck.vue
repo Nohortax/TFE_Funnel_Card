@@ -28,43 +28,41 @@ const submit = () => {
 </script>
 
 <template>
-    <Layout>
-        <Head title="New deck" />
+    <Head title="New deck" />
 
-        <h2 class="mb-8 sm:mb-16
-                   mr-2 sm:mr-8
-                   text-xs sm:text-sm md:text-lg">
-            Create a new deck
-        </h2>
+    <h2 class="mb-8 sm:mb-16
+               mr-2 sm:mr-8
+               text-xs sm:text-sm md:text-lg">
+        Create a new deck
+    </h2>
 
-        <form @submit.prevent="submit"
-              class="flex flex-col items-center mb-4">
-            <TextInput id="name"
-                       name="name"
-                       type="text"
-                       class="mb-4 sm:mb-8 pl-2"
-                       v-model="form.name"
-                       required
-                       autofocus
-                       placeholder="Name your deck" />
-            <InputError class="mt-2" :message="form.errors.name" />
+    <form @submit.prevent="submit"
+          class="flex flex-col items-center mb-4">
+        <TextInput id="name"
+                   name="name"
+                   type="text"
+                   class="mb-4 sm:mb-8 pl-2"
+                   v-model="form.name"
+                   required
+                   autofocus
+                   placeholder="Name your deck" />
+        <InputError class="mt-2" :message="form.errors.name" />
 
-            <InputLabel for="category"> Choose a category</InputLabel>
-            <select id="category"
-                    name="category_id" 
-                    v-model="form.category_id"
-                    class="border-2 border-stroke rounded-sm mb-8 sm:mb-12 mt-2 pl-2
-                           text-xs sm:text-sm md:text-lg"
-                    required>
-                <option v-for="category in categories" :key="category.id"
-                        :value="category.id"
-                        >{{ category.name }}
-                </option>
-            </select>
+        <InputLabel for="category"> Choose a category</InputLabel>
+        <select id="category"
+                name="category_id" 
+                v-model="form.category_id"
+                class="border-2 border-stroke rounded-sm mb-8 sm:mb-12 mt-2 pl-2
+                       text-xs sm:text-sm md:text-lg"
+                required>
+            <option v-for="category in categories" :key="category.id"
+                    :value="category.id"
+                    >{{ category.name }}
+            </option>
+        </select>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Create deck
-            </PrimaryButton>
-        </form>
-    </Layout>
+        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            Create deck
+        </PrimaryButton>
+    </form>
 </template>

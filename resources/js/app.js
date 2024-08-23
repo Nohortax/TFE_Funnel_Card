@@ -11,13 +11,18 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
+    resolve: async name => {
+        const page = await resolvePageComponent(`./Pages/${name}.vue`,
+            import.meta.glob("./Pages/**/*.vue"));
+        page.default.layout ??= Layout;
+        return page;
+      },
+        
     setup({ el, App, props, plugin }) {
         return createSSRApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
             .component("Link", Link)
-            .component("Layout", Layout)
             .mount(el);
     },
     progress: {
