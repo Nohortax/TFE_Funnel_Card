@@ -13,7 +13,10 @@ class DeckController extends Controller
     public function index()
     {
         return Inertia::render('Decks/Index', [
-            'decks' => Deck::all()
+            'decks' => Deck::paginate(12)->through(fn($deck) => [
+                'id' => $deck->id,
+                'name' => $deck->name
+            ])
         ]);
     }
 
