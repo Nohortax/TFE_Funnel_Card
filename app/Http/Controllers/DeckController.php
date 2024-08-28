@@ -6,17 +6,24 @@ use App\Models\Category;
 use App\Models\Deck;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Http\Request;
+use Request;
 
 class DeckController extends Controller
 {
     public function index()
     {
         return Inertia::render('Decks/Index', [
-            'decks' => Deck::paginate(12)->through(fn($deck) => [
-                'id' => $deck->id,
-                'name' => $deck->name
-            ])
+            'decks' => Deck::query()
+                ->when(Request::input('search'), function($query, $search){
+                    $query->where('name', 'like', "%{$search}%");
+                })
+                ->paginate(12)
+                ->withQueryString()
+                ->through(fn($deck) => [
+                    'id' => $deck->id,
+                    'name' => $deck->name
+                ]),
+            'filters'=> Request::only(['search'])
         ]);
     }
 

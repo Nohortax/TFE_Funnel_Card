@@ -1,9 +1,21 @@
 <script setup>
 import TextInput from '@/Components/TextInput.vue';
 import Pagination from '@/Components/Pagination.vue';
+import { ref, watch } from 'vue';
+import { router } from '@inertiajs/vue3';
 
-defineProps({
-    decks: Object
+let props = defineProps({
+    decks: Object,
+    filters: Object
+})
+
+const search = ref(props.filters.search);
+
+watch(search, value => {
+    router.get('/decks', { search: value }, {
+        preserveState: true,
+        replace: true
+    })
 })
 
 </script>
@@ -15,7 +27,7 @@ defineProps({
         <div class="flex items-center justify-start">
             <h2 class="mr-4 sm:mr-8
                        text-sm sm:text-lg">
-                    Your decks
+                    Your decks {{ search }}
             </h2>
 
             <Link href="/create-deck">
@@ -25,7 +37,7 @@ defineProps({
         </div>
 
         <form class="flex items-center justify-end relative">
-            <TextInput v-model="filterDeck"
+            <TextInput v-model="search"
                 placeholder="Search for a deck"
                 class="mr-2 sm:mr-4
                         sm:pl-2
